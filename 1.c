@@ -1,21 +1,42 @@
-#include <stdio.h>
+#include<stdio.h>
+#include<stdlib.h>
+typedef struct node{
+        int b;
+        struct node* next;
+    }Node;
 void main()
 {
-    int i,a;
-    scanf("%d",&a);
-    char p[a][100];
-    for(i=0;i<a;i++){
-    scanf("%s",p[i]);
+    int a;
+    Node* head=NULL;
+    Node* operate;
+    Node* record;
+    while(1){
+        scanf("%d",&a);
+        if(a!=1){
+            operate=(Node*)malloc(sizeof(Node));
+        if(head==NULL){
+            head=operate;
+        }
+        else{
+            record->next=operate;
+        }
+        operate->b=a;
+        operate->next=NULL;
+        record=operate;
     }
-   int j,n;
-   for (i=0; i<a; i++) {
-   	j=0;
-   	n=0;
-   	while(p[i][j] != '\0'){
-   			if (p[i][j]>47 && p[i][j] <58) {
-   			n++;
-			}j++;
-   		}
-   	printf("%d\n",n);
+        else{
+            break;
+        }
+    }
+    operate=head;
+    while(operate!=NULL){
+        printf("%d",operate->b);
+        operate=operate->next;
+    }
+    operate=head;
+    while(operate!=NULL){
+        record=operate;
+        free(operate);
+        operate=record->next;
     }
 }
