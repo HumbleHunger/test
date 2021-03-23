@@ -1,0 +1,3 @@
+/home/liuyuji/test/CMakeFiles/rebuild_cache.dir
+/home/liuyuji/test/CMakeFiles/edit_cache.dir
+/home/liuyuji/test/CMakeFiles/demo1.dir
