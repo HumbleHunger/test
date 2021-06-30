@@ -1,15 +1,14 @@
 #include<iostream>
-class A
-{
-  int num;
-public:
-  A(int i){num=i;}
-  A(A &a){num=a.num++;}
-    void print(){std::cout<<num;}
-};
+#include<vector>
+using namespace std;
 int main()
 {
-  A a(1),b(a);
-  a.print();
-  b.print();
+    vector<int> s;
+    s.reserve(5);
+    cout << s.size() << endl;
+    cout << s.capacity() << endl;
+    s.resize(10);
+    cout << s.size() << endl;
+    cout << s.capacity() << endl;
+
 }
