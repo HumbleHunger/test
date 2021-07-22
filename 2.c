@@ -1,17 +1,24 @@
 #include <stdio.h>
-void main()
+typedef struct a {
+    int *a;
+    int *b;
+}S;
+int main()
 {
-	int a;
-	scanf("%d", &a);
-	if ( a%2 == 0 ) {
-		if ( a%4 == 0 ){
-	printf("%d %d",a/4,a/2);
-		}
-		else {
-	printf("%d %d",a/4+1,a/2);
-		}
-	}
-	else {
-	printf("0 0");
-	}
+    S p;
+    int q=0;
+    int e=0;
+    p.a = &q;
+    p.b = &e;
+    p->a = 1 ;
+    p->b = 1;
+    p->a = 2 ;
+    p->a = 2 ;
+    p->a = 3 ;
+    p->a = 3 ;
+    p->b = 4;
+    p->b = 4;
+    p->b = 5;
+    p->b = 5;
+
 }
