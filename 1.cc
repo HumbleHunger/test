@@ -3,12 +3,9 @@
 using namespace std;
 int main()
 {
-    vector<int> s;
-    s.reserve(5);
-    cout << s.size() << endl;
-    cout << s.capacity() << endl;
-    s.resize(10);
-    cout << s.size() << endl;
-    cout << s.capacity() << endl;
-
+    for (int i = 0; i < 5; ++i) {
+        vector<int> v;
+        v.push_back(1);
+        cout << v.size() << endl;
+    }
 }
