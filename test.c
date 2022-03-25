@@ -13,23 +13,26 @@ void *thread_entry(void *arg)
         printf("child count: %d\n", count);
         count++;
 
-        pthread_mutex_unlock(&mutex);
         if (count > 100){
             pthread_cond_signal(&cond);
+            pthread_mutex_unlock(&mutex);
+            pthread_exit(NULL);
             return (void *) count;
         }
+        pthread_mutex_unlock(&mutex);
     }
 }
 
 void *pthread_cond_test(void *arg)
 {
     pthread_mutex_lock(&mutex);
-    if(count < 100){
-        printf("Thread %d is waiting for cond\n",pthread_self());
+    if (count < 100){
+        printf("Thread %lu is waiting for cond\n",pthread_self());
         pthread_cond_wait(&cond,&mutex);
     }
     printf("Thread %d is awakened\n",pthread_self());
     pthread_mutex_unlock(&mutex);
+    pthread_exit(NULL);
 }
 
 int main(int argc, char *argv[])
@@ -50,18 +53,9 @@ int main(int argc, char *argv[])
         return -1;
     }
 
-    while (1) {
-        pthread_mutex_lock(&mutex);
-        printf("parent count: %d\n", count);
-        count++;
-        
-        pthread_mutex_unlock(&mutex);
-        if (count > 100)
-            break;
-    }
-
     void *status;
+    pthread_join(thread1, &status);
     pthread_join(thread, &status);
-    printf("thread exit with %x!\n", status);
+   printf("thread exit with %x!\n", status);
     return 0;
 }
